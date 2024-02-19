@@ -8,7 +8,7 @@ export function DBMS(
 	env: Record<string, Fetcher | D1Database | string>,
 ): Record<string, D1Database> {
 	const keys = Object.keys(env).filter(
-		(k) => k.startsWith("curio") || k.startsWith("__D1_BETA__DB"),
+		(k) => k.startsWith("D1") || k.startsWith("__D1_BETA__DB"),
 	);
 	log("Database Bindings:", keys.join(", "));
 
@@ -19,7 +19,7 @@ export function DBMS(
 			continue;
 		}
 		const db = "prepare" in e ? e : new D1Shim(e);
-		results[k.replace(/^(__D1_BETA__)?curio_?/, "") || "default"] = db;
+		results[k.replace(/^(__D1_BETA__)?D1_?/, "") || "default"] = db;
 	}
 	return results;
 }
