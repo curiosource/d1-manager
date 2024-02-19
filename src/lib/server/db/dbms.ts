@@ -19,7 +19,7 @@ export function DBMS(
 			continue;
 		}
 		const db = "prepare" in e ? e : new D1Shim(e);
-		results[k.replace(/^(__D1_BETA__)?DB_?/, "") || "default"] = db;
+		results[k.replace(/^(__D1_BETA__)?curio_?/, "") || "default"] = db;
 	}
 	return results;
 }
